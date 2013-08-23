@@ -4,21 +4,37 @@ import java.util.List;
 
 
 public class BowlingGame {
-	static List<Frame> game = new ArrayList<Frame>(10);
+	static List<Player> players = new ArrayList<Player>(4);
 	
 	public static void main(String[] args) {
-		for (int i=1; i<=10; i++) {
-			System.out.printf("%dth Frame\n", i);
-			game.add(new Frame(i));
+		// TODO: Player 수 지정 및 초기화
+		players.add(new Player());
+		players.add(new Player());
+		
+		for (int frameNum=0; frameNum<9; frameNum++) {
+			for (int i=0; i<players.size(); i++) {
+				System.out.format("Turn: Player %d ", i+1);
+				System.out.format("%dth Frame\n", frameNum+1);
+				// TODO: 프레임 시작 혹은 점수 확인 분기
+				players.get(i).play();
+			}
+		}
+		for (int i=0; i<players.size(); i++) {
+			System.out.format("Turn: Player %d ", i+1);
+			System.out.println("Last Frame");
+			players.get(i).lastPlay();
 		}
 		System.out.println("Game SET");
+		// TODO: throw GameOverException;
 		print();
 	}
 	
 	static void print() {
-		for (Frame f : game) {
-			System.out.println(game.indexOf(f)+1);
-			System.out.println(f.point[0] +","+ f.point[1]);
+		int i=1;
+		for (Player player : players) {
+			System.out.printf("**** Player %d ****\n", i);
+			player.printScore();
+			i++;
 		}
 	}
 }
