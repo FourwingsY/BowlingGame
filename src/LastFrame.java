@@ -2,10 +2,9 @@ import java.util.Scanner;
 
 
 public class LastFrame extends Frame {
-	int score[] = {0,0,0};
-	int totalScore = 0;
 	
 	LastFrame() {
+		super.score = new int[3];
 		roll(0);
 		roll(1);
 		if (isStrike(1) || isSpare())
@@ -44,7 +43,7 @@ public class LastFrame extends Frame {
 	}
 
 	private void ok(int i, int temp) {
-		score[i] = temp;
-		totalScore += temp;
+		super.score[i] = temp;
+		super.totalScore += temp;
 	}
 }

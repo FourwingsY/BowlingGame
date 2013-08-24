@@ -3,11 +3,12 @@ import java.util.Scanner;
 
 public class Frame {
 	
-	int score[] = {0,0};
+	int[] score;
 	int totalScore = 0;
 	
 	
 	Frame() {
+		score = new int[2];
 		roll(0);
 		if (this.isStrike(0))
 			return;
