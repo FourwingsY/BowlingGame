@@ -10,14 +10,14 @@ public class Player {
 	List<Frame> frames = new ArrayList<Frame>();
 
 	Player(int index) {
-		this.name = "Player"+index;
+		this.name = "Player "+index;
 	}
 	Player(String name) {
 		this.name = name;
 	}
 	public void play(int frameNum) {
 		// TODO: Play로 프레임 실행.
-		System.out.printf("Player: %s, Frame: %d\n", name, frameNum);
+		System.out.printf("%s, Frame: %d\n", name, frameNum);
 		if (frameNum == 9) {
 			frames.add(new LastFrame());
 			return;
@@ -30,9 +30,9 @@ public class Player {
 		for (int i=0; i<frames.size(); i++) {
 			Frame f = frames.get(i);
 			if (f.isStrike())
-				System.out.printf("%d: %d(%d, %d) \n", i, getStrikeScores(f), f.getRollScore(0), f.getRollScore(1));
+				System.out.printf("%d: %d(X) \n", i, getStrikeScores(f));
 			else if (f.isSpare())
-				System.out.printf("%d: %d(%d, %d) \n", i, getSpareScores(f), f.getRollScore(0), f.getRollScore(1));
+				System.out.printf("%d: %d(%d, /) \n", i, getSpareScores(f), f.getRollScore(0));
 			else System.out.printf("%d: %d(%d, %d) \n", i, f.frameScore, f.getRollScore(0), f.getRollScore(1));
 		}
 	}
