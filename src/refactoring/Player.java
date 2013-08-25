@@ -23,6 +23,7 @@ public class Player {
 	private void handleWaitings() {
 		if (waitingFrames.isEmpty())
 			return;
+		waitingFrames.get(0);
 		
 	}
 }

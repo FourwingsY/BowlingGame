@@ -5,29 +5,22 @@ import java.util.Scanner;
 public class Frame {
 	int[] score;
 	int totalScore = 0;
-	int rollNum;
 	
 	Frame() {
-		rollNum = 0;
 		score = new int[2];
-	}
-
-	void start() {
-		roll(rollNum);
-		rollNum++;
+		
+		roll(0);
 		if (! this.isStrike(0))
 			roll(1);
 	}
 
-
 	int roll(int rollIdx) {
 		int result;
-		inform();
+		System.out.format("%dth roll : ", rollIdx);
 		Scanner sc = new Scanner(System.in);
 		result = sc.nextInt();
 		
 		if (this.isValid(result)) {
-			System.out.println(this);
 			score[rollIdx] = result;
 			return result;
 		}
@@ -37,9 +30,6 @@ public class Frame {
 		return roll(rollIdx);
 	}
 
-	private void inform() {
-		System.out.format("%dth roll : ", rollNum);
-	}
 	
 	boolean isStrike(int i) {
 		if (score[i] == 10)
