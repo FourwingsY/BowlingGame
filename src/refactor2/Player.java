@@ -16,8 +16,7 @@ public class Player {
 		this.name = name;
 	}
 	public void play(int frameNum) {
-		// TODO: Play로 프레임 실행.
-		System.out.printf("%s, Frame: %d\n", name, frameNum);
+		System.out.printf("%s, Frame: %d\n", name, frameNum+1);
 		if (frameNum == 9) {
 			frames.add(new LastFrame());
 			return;
@@ -30,10 +29,10 @@ public class Player {
 		for (int i=0; i<frames.size(); i++) {
 			Frame f = frames.get(i);
 			if (f.isStrike())
-				System.out.printf("%d: %d(X) \n", i, getStrikeScores(f));
+				System.out.printf("%2d: %2d%s \n", i+1, getStrikeScores(f), f.getDetailScore());
 			else if (f.isSpare())
-				System.out.printf("%d: %d(%d, /) \n", i, getSpareScores(f), f.getRollScore(0));
-			else System.out.printf("%d: %d(%d, %d) \n", i, f.frameScore, f.getRollScore(0), f.getRollScore(1));
+				System.out.printf("%2d: %2d%s \n", i+1, getSpareScores(f), f.getDetailScore());
+			else System.out.printf("%2d: %2d%s \n", i+1, f.frameScore, f.getDetailScore());
 		}
 	}
 	
@@ -66,6 +65,10 @@ public class Player {
 	
 	private Frame getNextFrame(Frame f) {
 		int i = frames.indexOf(f);
+		if (i == 9) {
+			LastFrame lf = (LastFrame) frames.get(i);
+			return lf.bonus;
+		}
 		if (i+1 < frames.size())
 			return frames.get(i+1);
 		return null;

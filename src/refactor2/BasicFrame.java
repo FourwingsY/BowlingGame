@@ -17,4 +17,23 @@ public class BasicFrame extends Frame {
 		results.add(r2);
 		frameScore += r1.score + r2.score;
 	}
+	
+	String getDetailScore() {
+		StringBuilder result = new StringBuilder();
+
+		result.append("(");
+		if (this.isStrike()) {
+			result.append("X)");
+			return result.toString();
+		}
+		result.append(results.get(0).score);
+		result.append(", ");
+		if (this.isSpare()) {
+			result.append("/)");
+			return result.toString();
+		}
+		result.append(results.get(1).score);
+		result.append(")");
+		return result.toString();
+	}
 }

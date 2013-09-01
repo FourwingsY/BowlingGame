@@ -10,8 +10,12 @@ public class BonusRoll extends Roll {
 
 	@Override
 	int getResult(int i) {
-		System.out.printf("bonus roll : ", i);
+		System.out.printf("bonus roll : ");
 		Scanner sc = new Scanner(System.in);
+		while (! sc.hasNextInt()) {
+			System.out.println("Must be Int!");
+			sc.nextLine();
+		}
 		score = sc.nextInt();
 		return score;
 	}

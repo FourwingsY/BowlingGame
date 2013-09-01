@@ -20,7 +20,6 @@ public class Player {
 		}
 	}
 	void lastPlay() {
-		Frame thisTurn = new LastFrame();
 	}
 	private void countWaiting(Frame thisTurn) {
 		waitingForCount.totalScore += thisTurn.score[0];

@@ -26,4 +26,6 @@ public abstract class Frame {
 			return -1;
 		return results.get(i).score;
 	}
+
+	abstract String getDetailScore();
 }

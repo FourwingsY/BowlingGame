@@ -6,17 +6,14 @@ import java.util.Scanner;
 
 public class BowlingGame {
 
-static List<Player> players = new ArrayList<Player>(4);
+	static List<Player> players = new ArrayList<Player>(4);
 	
 	public static void main(String[] args) throws GameOverException {
-		int playerNum = getPlayerNum();
-		initPlayer(playerNum);
+		initPlayer(getPlayerNum());
 		
 		for (int frameNum=0; frameNum<10; frameNum++) {
-			for (Player p : players) {
+			for (Player p : players)
 				p.play(frameNum);
-				printBoard();
-			}
 		}
 		printBoard();
 		throw new GameOverException();
@@ -28,7 +25,7 @@ static List<Player> players = new ArrayList<Player>(4);
 			System.out.printf("How many Players in game?(1-4) : ");
 			Scanner sc = new Scanner(System.in);
 			while (!sc.hasNextInt()) {
-				System.out.println("Must be int");
+				System.out.printf("Must be int! Again : ");
 				sc.nextLine();
 			}
 			playerNum = sc.nextInt();
@@ -38,7 +35,7 @@ static List<Player> players = new ArrayList<Player>(4);
 	
 	private static void initPlayer(int playerNum) {
 		for (int i=0; i<playerNum; i++) {
-			System.out.printf("Name of Player%d (input 0 for default): ", i);
+			System.out.printf("Name of Player%d (input 0 for default) : ", i);
 			Scanner sc = new Scanner(System.in);
 			String playerName = sc.next();
 			if ("0".equals(playerName))	
@@ -46,7 +43,6 @@ static List<Player> players = new ArrayList<Player>(4);
 			else players.add(new Player(playerName));
 		}
 	}
-
 
 	static void printBoard() {
 		for (Player p : players) {
