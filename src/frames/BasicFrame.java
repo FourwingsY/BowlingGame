@@ -1,8 +1,8 @@
-package refactor2;
+package frames;
 
 public class BasicFrame extends Frame {
 	
-	BasicFrame() {
+	public BasicFrame() {
 		
 		Roll r1 = new Roll(null);
 		results.add(r1);
@@ -15,10 +15,10 @@ public class BasicFrame extends Frame {
 		// else
 		Roll r2 = new Roll(r1);
 		results.add(r2);
-		frameScore += r1.score + r2.score;
+		frameScore = getFrameScore() + (r1.score + r2.score);
 	}
 	
-	String getDetailScore() {
+	public String getDetailScore() {
 		StringBuilder result = new StringBuilder();
 
 		result.append("(");

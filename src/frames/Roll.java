@@ -1,4 +1,4 @@
-package refactor2;
+package frames;
 
 import java.util.Scanner;
 

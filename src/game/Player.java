@@ -1,7 +1,11 @@
-package refactor2;
+package game;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import frames.BasicFrame;
+import frames.Frame;
+import frames.LastFrame;
 
 public class Player {
 
@@ -32,12 +36,12 @@ public class Player {
 				System.out.printf("%2d: %2d%s \n", i+1, getStrikeScores(f), f.getDetailScore());
 			else if (f.isSpare())
 				System.out.printf("%2d: %2d%s \n", i+1, getSpareScores(f), f.getDetailScore());
-			else System.out.printf("%2d: %2d%s \n", i+1, f.frameScore, f.getDetailScore());
+			else System.out.printf("%2d: %2d%s \n", i+1, f.getFrameScore(), f.getDetailScore());
 		}
 	}
 	
 	private int getStrikeScores(Frame f) {
-		int result = f.frameScore;
+		int result = f.getFrameScore();
 		Frame nf = getNextFrame(f);
 		if (nf == null)
 			return -1;
@@ -50,12 +54,12 @@ public class Player {
 			result += nnf.getRollScore(0);
 			return result;
 		}
-		result += nf.frameScore;
+		result += nf.getFrameScore();
 		return result;
 	}
 	
 	private int getSpareScores(Frame f) {
-		int result = f.frameScore;
+		int result = f.getFrameScore();
 		Frame nf = getNextFrame(f);
 		if (nf == null)
 			return -1;
@@ -67,7 +71,7 @@ public class Player {
 		int i = frames.indexOf(f);
 		if (i == 9) {
 			LastFrame lf = (LastFrame) frames.get(i);
-			return lf.bonus;
+			return lf.getBonusFrame();
 		}
 		if (i+1 < frames.size())
 			return frames.get(i+1);

@@ -1,8 +1,8 @@
-package refactor2;
+package frames;
 
 public class LastFrame extends BasicFrame {
 	Frame bonus = null;
-	LastFrame() {
+	public LastFrame() {
 		// automatically call BasicFrame
 		if (this.isStrike())
 			bonus = new BonusFrame(2);
@@ -11,7 +11,7 @@ public class LastFrame extends BasicFrame {
 	}
 	
 	@Override
-	String getDetailScore() {
+	public String getDetailScore() {
 		StringBuilder result = new StringBuilder();
 
 		result.append("(");
@@ -31,5 +31,9 @@ public class LastFrame extends BasicFrame {
 		result.append(")");
 		
 		return result.toString();
+	}
+	
+	public Frame getBonusFrame() {
+		return bonus;
 	}
 }
